@@ -15,6 +15,8 @@ const config: Config = {
       line: "#393C49",
       form: "#2D303E",
       text: "#E0E6E9",
+      nav: "#373A48",
+      white: "#ffffff"
     },
   },
 };

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
+import { Nav } from "@/components/Nav";
 import "./globals.css";
 
 const barlow = Barlow({ subsets: ["latin"], weight: ["400", "600"] });
@@ -16,7 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={barlow.className}>{children}</body>
+      <body className={barlow.className}>
+        <div className="grid bg-bg grid-cols-[104px_1fr_34%] h-screen">
+          <Nav />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

@@ -4,11 +4,12 @@ import { Home } from "@/components/Icons";
 import { Dashboard } from "@/components/Icons";
 import { Settings } from "@/components/Icons";
 import { Logout } from "@/components/Icons";
+import { NavButton } from "@/components/NavButton";
 
 export function Nav() {
   return (
-    <nav className="bg-secondary rounded-r-2xl flex flex-col items-center py-6">
-      <div className="p-2 bg-primary bg-opacity-25 rounded-xl">
+    <nav className="bg-secondary rounded-r-2xl flex flex-col items-end py-6">
+      <div className="p-2 bg-primary bg-opacity-25 rounded-xl self-center mb-3">
         <Image
           src="/logo.svg"
           width={40}
@@ -17,18 +18,21 @@ export function Nav() {
           className="block"
         />
       </div>
-      <Link href="/" className="fill-primary">
-        <Home />
-      </Link>
-      <Link href="/dashboard" className="fill-primary">
-        <Dashboard />
-      </Link>
-      <Link href="/settings" className="fill-primary">
-        <Settings />
-      </Link>
-      <Link href="/logout" className="fill-primary">
-        <Logout />
-      </Link>
+
+      <ul>
+        <NavButton href="/">
+          <Home />
+        </NavButton>
+        <NavButton href="/dashboard">
+          <Dashboard />
+        </NavButton>
+        <NavButton href="/settings">
+          <Settings />
+        </NavButton>
+        <NavButton href="/logout">
+          <Logout />
+        </NavButton>
+      </ul>
     </nav>
   );
 }

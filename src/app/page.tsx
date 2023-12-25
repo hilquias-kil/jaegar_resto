@@ -1,10 +1,8 @@
 import { Cart } from "@/components/Cart";
-import { Nav } from "@/components/Nav";
 
 export default function Home() {
   return (
-    <div className="grid bg-bg grid-cols-[104px_minmax(900px,_1fr)_34%] h-screen">
-      <Nav />
+    <>
       <main className="p-6">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt rerum
@@ -14,6 +12,6 @@ export default function Home() {
         </p>
       </main>
       <Cart />
-    </div>
+    </>
   );
 }
