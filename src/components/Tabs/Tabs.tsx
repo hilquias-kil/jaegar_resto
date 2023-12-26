@@ -29,7 +29,7 @@ const Tab = ({ children, href, active }: TabProps) => {
 
 export const Tabs = () => {
   return (
-    <ul className="flex gap-8 border-b-line border-b-[1px]">
+    <ul className="flex gap-8 border-b-line border-b-[1px] mb-6">
       <Tab href="/" active>
         Hot Dishes
       </Tab>

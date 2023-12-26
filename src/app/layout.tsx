@@ -3,7 +3,7 @@ import { Barlow } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import "./globals.css";
 
-const barlow = Barlow({ subsets: ["latin"], weight: ["400", "600"] });
+const barlow = Barlow({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export const metadata: Metadata = {
   title: "Food App",
