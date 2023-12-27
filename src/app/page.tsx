@@ -6,7 +6,7 @@ import { Tabs } from "@/components/Tabs";
 export default function Home() {
   return (
     <>
-      <main className="p-6">
+      <main className="p-6 pb-0 grid grid-rows-[auto_auto_auto_1fr] h-screen">
         <Header />
         <Tabs />
         <ProductList />

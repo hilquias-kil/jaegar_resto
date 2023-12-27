@@ -18,7 +18,7 @@ export function Cart() {
     <aside className="bg-secondary rounded-l-lg p-6 flex flex-col">
       <h3 className="text-xl font-semibold mb-10">Order #34562</h3>
       <div className="grow">
-        <table className="w-full">
+        <table className="w-full table-fixed">
           <thead>
             <tr>
               <th className="text-left border-b-line border-b-[1px] pb-6 pr-2">

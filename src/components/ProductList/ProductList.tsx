@@ -39,7 +39,7 @@ export function ProductList() {
   return (
     <>
       <h2 className="text-[28px] font-semibold mb-6">Choose Dishes</h2>
-      <div className="grid grid-cols-3 gap-7">
+      <div className="grid grid-cols-3 gap-7 overflow-y-auto">
         {products.map((product) => (
           <Product
             key={product.id}
