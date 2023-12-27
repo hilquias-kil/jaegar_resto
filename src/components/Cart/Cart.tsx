@@ -1,4 +1,8 @@
+"use client";
+
 import { CartProduct } from "@/components/CartProduct";
+import { useStore } from "@/store/useStore";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 function EmptyCart() {
   return (
@@ -14,10 +18,16 @@ function EmptyCart() {
 }
 
 export function Cart() {
+  const cart = useStore((state) => state.cart);
+  const changeProductQty = useStore((state) => state.changeProductQty);
+  const changeProductNote = useStore((state) => state.changeProductNote);
+  const removeProduct = useStore((state) => state.removeProduct);
+  const totalCart = useStore((state) => state.totalCart);
+
   return (
-    <aside className="bg-secondary rounded-l-lg p-6 flex flex-col">
+    <aside className="bg-secondary rounded-l-lg p-6 grid grid-rows-[auto_1fr_auto] h-screen">
       <h3 className="text-xl font-semibold mb-10">Order #34562</h3>
-      <div className="grow">
+      <div className="overflow-y-auto">
         <table className="w-full table-fixed">
           <thead>
             <tr>
@@ -33,9 +43,23 @@ export function Cart() {
             </tr>
           </thead>
           <tbody>
-            <CartProduct />
-            <CartProduct />
-            <CartProduct />
+            {!!cart.length ? (
+              cart.map((it) => (
+                <CartProduct
+                  key={it.id}
+                  name={it.name}
+                  image={it.image}
+                  price={it.price}
+                  note={it.note}
+                  qty={it.qty}
+                  changeNote={(note) => changeProductNote(it.id, note)}
+                  changeQty={(qty) => changeProductQty(it.id, parseInt(qty))}
+                  removeProduct={() => removeProduct(it.id)}
+                />
+              ))
+            ) : (
+              <EmptyCart />
+            )}
           </tbody>
         </table>
       </div>
@@ -53,7 +77,7 @@ export function Cart() {
             Sub total
           </span>
           <span className="text-right text-white text-base font-medium  leading-snug">
-            $0
+            {formatCurrency(totalCart())}
           </span>
         </p>
         <button

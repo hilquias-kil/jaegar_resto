@@ -7,6 +7,7 @@ import { useStore } from "@/store/useStore";
 export function ProductList({ products }: { products: ProductModel[] }) {
   const category = useStore((state) => state.category);
   const search = useStore((state) => state.search);
+  const addToCart = useStore((state) => state.addToCart);
 
   return (
     <>
@@ -23,7 +24,7 @@ export function ProductList({ products }: { products: ProductModel[] }) {
               image={product.image}
               price={product.price}
               title={product.name}
-              addToOrder={() => {}}
+              addToOrder={() => addToCart(product)}
             />
           ))}
       </div>
