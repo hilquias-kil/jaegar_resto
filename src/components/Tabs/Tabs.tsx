@@ -1,9 +1,13 @@
-import Link from "next/link";
+"use client";
+
+import { ProductModel } from "@/model/product";
+import { useStore } from "@/store/useStore";
+import { useEffect } from "react";
 
 interface TabProps {
   children: string;
-  href: string;
   active?: boolean;
+  onClick: () => void;
 }
 
 const tabVariants = {
@@ -12,32 +16,47 @@ const tabVariants = {
   default: "text-white",
 };
 
-const Tab = ({ children, href, active }: TabProps) => {
+const Tab = ({ children, active, onClick }: TabProps) => {
   return (
     <li>
-      <Link
-        href={href}
+      <button
         className={`text-sm font-semibold hover:text-primary pb-3 block relative ${
           active ? tabVariants.active : tabVariants.default
         }`}
+        onClick={onClick}
       >
         {children}
-      </Link>
+      </button>
     </li>
   );
 };
 
-export const Tabs = () => {
+export const Tabs = ({ products }: { products: ProductModel[] }) => {
+  const categories: string[] = [];
+  products.forEach((it) => {
+    if (!categories.includes(it.category)) {
+      categories.push(it.category);
+    }
+  });
+
+  const category = useStore((state) => state.category);
+  const setCategory = useStore((state) => state.setCategory);
+
+  useEffect(() => {
+    setCategory(categories[0]);
+  }, []);
+
   return (
     <ul className="flex gap-8 border-b-line border-b-[1px] mb-6">
-      <Tab href="/" active>
-        Hot Dishes
-      </Tab>
-      <Tab href="/">Cold Dishes</Tab>
-      <Tab href="/">Soup</Tab>
-      <Tab href="/">Grill</Tab>
-      <Tab href="/">Appetizer</Tab>
-      <Tab href="/">Dessert</Tab>
+      {categories.map((item) => (
+        <Tab
+          key={item}
+          active={item === category}
+          onClick={() => setCategory(item)}
+        >
+          {item}
+        </Tab>
+      ))}
     </ul>
   );
 };
