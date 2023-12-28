@@ -89,26 +89,6 @@ export function Cart() {
           </button>
         </div>
       </aside>
-      <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex justify-end">
-        <div className="w-[68%] h-full bg-secondary rounded-l-xl grid grid-cols-2">
-          <div className="p-6 border-r-line border-r-[1px]">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae ullam blanditiis odit culpa a labore dolor possimus
-              adipisci animi doloremque consequatur, magnam nihil deleniti
-              libero harum veritatis quod obcaecati perferendis!
-            </p>
-          </div>
-          <div className="p-6">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi
-              id, unde consequuntur natus at enim autem. Sequi doloremque
-              consequuntur exercitationem, commodi dolor nobis voluptatibus
-              ipsam laudantium natus dicta beatae reprehenderit.
-            </p>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

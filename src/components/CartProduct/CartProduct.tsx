@@ -36,7 +36,7 @@ export function CartProduct({
             </div>
           </div>
         </td>
-        <td className="px-2 pt-6 pb-[10px]">
+        <td className="px-2 pt-6 pb-[10px] w-16">
           <input
             type="text"
             value={qty}
@@ -44,7 +44,7 @@ export function CartProduct({
             className="text-base font-medium w-full border-line bg-form hover:bg-[#373A48] focus:bg-[#1F1D2B] focus:border-[#ABBBC2] border-[1px] rounded-lg py-[10px]  px-[14px] focus:outline-none text-center transition-colors"
           />
         </td>
-        <td className="pl-2 pt-6 pb-[10px] text-base font-medium">
+        <td className="pl-2 pt-6 pb-[10px] text-base font-medium w-14">
           {formatCurrency(price * qty)}
         </td>
       </tr>

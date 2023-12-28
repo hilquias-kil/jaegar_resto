@@ -1,5 +1,6 @@
 import { Cart } from "@/components/Cart";
 import { Header } from "@/components/Header";
+import { Payment } from "@/components/Payment";
 import { ProductList } from "@/components/ProductList";
 import { Tabs } from "@/components/Tabs";
 import { ProductModel } from "@/model/product";
@@ -15,6 +16,7 @@ export default async function Home() {
         <ProductList products={products} />
       </main>
       <Cart />
+      <Payment />
     </>
   );
 }
