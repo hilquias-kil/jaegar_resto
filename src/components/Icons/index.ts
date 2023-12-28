@@ -6,3 +6,7 @@ export * from "./search";
 export * from "./plus";
 export * from "./trash";
 export * from "./back";
+export * from "./creditCard";
+export * from "./paypal";
+export * from "./wallet";
+export * from "./checkmark";

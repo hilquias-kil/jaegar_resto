@@ -1,9 +1,18 @@
 "use client";
 
-import { Back, Plus } from "@/components/Icons";
+import {
+  Back,
+  Checkmark,
+  CreditCard,
+  Paypal,
+  Plus,
+  Wallet,
+} from "@/components/Icons";
 import { CartProduct } from "@/components/CartProduct";
 import { useStore } from "@/store/useStore";
 import { formatCurrency } from "@/utils/formatCurrency";
+import { PayMethodButton } from "../PayMethodButton";
+import { TextField } from "../TextField";
 
 export function Payment() {
   const cart = useStore((state) => state.cart);
@@ -70,7 +79,7 @@ export function Payment() {
             </p>
           </div>
         </div>
-        <div className="p-6 ">
+        <div className="p-6 grid grid-rows-[auto_1fr_auto]">
           <div className="border-b-line border-b-[1px] pb-6 mt-10 mb-6">
             <h3 className="text-white text-[28px] font-semibold leading-[39.20px] mb-[6px]">
               Payment
@@ -80,7 +89,81 @@ export function Payment() {
             </p>
           </div>
           <div>
-            <h4 className="text-xl font-semibold leading-7">Payment Method</h4>
+            <h4 className="text-xl font-semibold leading-7 mb-4">
+              Payment Method
+            </h4>
+            <div className="flex gap-2 mb-4">
+              <PayMethodButton label="Credit Card" active>
+                <CreditCard />
+              </PayMethodButton>
+              <PayMethodButton label="Paypal">
+                <Paypal color="#ABBBC2" />
+              </PayMethodButton>
+              <PayMethodButton label="Cash">
+                <Wallet />
+              </PayMethodButton>
+            </div>
+            <form action="/" className="flex flex-col">
+              <label
+                htmlFor="cardholder_name"
+                className="text-white text-sm font-medium leading-[18.20px] mb-2"
+              >
+                Cardholder Name
+              </label>
+              <TextField id="cardholder_name" />
+              <label
+                htmlFor="card_number"
+                className="text-white text-sm font-medium leading-[18.20px] mb-2 mt-4"
+              >
+                Card Number
+              </label>
+              <TextField id="card_number" />
+              <div className="mt-4 grid grid-cols-2 gap-3 border-b-line border-b-[1px] pb-4">
+                <div>
+                  <label
+                    htmlFor="expiration_date"
+                    className="text-white text-sm font-medium leading-[18.20px] mb-2 block"
+                  >
+                    Expiration Date
+                  </label>
+                  <TextField id="expiration_date" />
+                </div>
+                <div>
+                  <label
+                    htmlFor="cvv"
+                    className="text-white text-sm font-medium leading-[18.20px] mb-2 block"
+                  >
+                    CVV
+                  </label>
+                  <TextField id="cvv" />
+                </div>
+              </div>
+              <div className=" grid grid-cols-2 gap-3">
+                <div>
+                  <label
+                    htmlFor="table_no"
+                    className="text-white text-sm font-medium leading-[18.20px] mb-2 mt-4 block"
+                  >
+                    Table no.
+                  </label>
+                  <TextField id="table_no" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              className="p-3.5 text-primary hover:bg-[rgba(234,124,105,0.16)] active:opacity-70 border-primary border-[1px] bg-transparent active:opacity-70 rounded-lg text-sm font-semibold leading-tight  w-full transition-all"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="p-3.5 bg-primary hover:bg-[#FE907D] active:opacity-70 rounded-lg text-sm font-semibold leading-tight  shadow-[0px_8px_24px_0px_rgba(234,124,105,0.32)] w-full transition-all"
+            >
+              Confirm Payment
+            </button>
           </div>
         </div>
       </div>
