@@ -25,68 +25,90 @@ export function Cart() {
   const totalCart = useStore((state) => state.totalCart);
 
   return (
-    <aside className="bg-secondary rounded-l-lg p-6 grid grid-rows-[auto_1fr_auto] h-screen">
-      <h3 className="text-xl font-semibold mb-10">Order #34562</h3>
-      <div className="overflow-y-auto">
-        <table className="w-full table-fixed">
-          <thead>
-            <tr>
-              <th className="text-left border-b-line border-b-[1px] pb-6 pr-2">
-                Item
-              </th>
-              <th className="text-left border-b-line border-b-[1px] pb-6 w-16 px-2">
-                Qty
-              </th>
-              <th className="text-left border-b-line border-b-[1px] pb-6 w-14 pl-2">
-                Price
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {!!cart.length ? (
-              cart.map((it) => (
-                <CartProduct
-                  key={it.id}
-                  name={it.name}
-                  image={it.image}
-                  price={it.price}
-                  note={it.note}
-                  qty={it.qty}
-                  changeNote={(note) => changeProductNote(it.id, note)}
-                  changeQty={(qty) => changeProductQty(it.id, parseInt(qty))}
-                  removeProduct={() => removeProduct(it.id)}
-                />
-              ))
-            ) : (
-              <EmptyCart />
-            )}
-          </tbody>
-        </table>
+    <>
+      <aside className="bg-secondary rounded-l-lg p-6 grid grid-rows-[auto_1fr_auto] h-screen">
+        <h3 className="text-xl font-semibold mb-10">Order #34562</h3>
+        <div className="overflow-y-auto">
+          <table className="w-full table-fixed">
+            <thead>
+              <tr>
+                <th className="text-left border-b-line border-b-[1px] pb-6 pr-2">
+                  Item
+                </th>
+                <th className="text-left border-b-line border-b-[1px] pb-6 w-16 px-2">
+                  Qty
+                </th>
+                <th className="text-left border-b-line border-b-[1px] pb-6 w-14 pl-2">
+                  Price
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {!!cart.length ? (
+                cart.map((it) => (
+                  <CartProduct
+                    key={it.id}
+                    name={it.name}
+                    image={it.image}
+                    price={it.price}
+                    note={it.note}
+                    qty={it.qty}
+                    changeNote={(note) => changeProductNote(it.id, note)}
+                    changeQty={(qty) => changeProductQty(it.id, parseInt(qty))}
+                    removeProduct={() => removeProduct(it.id)}
+                  />
+                ))
+              ) : (
+                <EmptyCart />
+              )}
+            </tbody>
+          </table>
+        </div>
+        <div className="pt-6 border-t-line border-t-[1px]">
+          <p className="flex justify-between mb-4">
+            <span className="text-[#ABBBC2] text-sm font-normal leading-tight">
+              Discount
+            </span>
+            <span className="text-right text-white text-base font-medium  leading-snug">
+              $0
+            </span>
+          </p>
+          <p className="flex justify-between mb-11">
+            <span className="text-[#ABBBC2] text-sm font-normal leading-tight">
+              Sub total
+            </span>
+            <span className="text-right text-white text-base font-medium  leading-snug">
+              {formatCurrency(totalCart())}
+            </span>
+          </p>
+          <button
+            type="button"
+            className="p-3.5 bg-primary hover:bg-[#FE907D] active:opacity-70 rounded-lg text-sm font-semibold leading-tight  shadow-[0px_8px_24px_0px_rgba(234,124,105,0.32)] w-full transition-all"
+          >
+            Continue to Payment
+          </button>
+        </div>
+      </aside>
+      <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex justify-end">
+        <div className="w-[68%] h-full bg-secondary rounded-l-xl grid grid-cols-2">
+          <div className="p-6 border-r-line border-r-[1px]">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Recusandae ullam blanditiis odit culpa a labore dolor possimus
+              adipisci animi doloremque consequatur, magnam nihil deleniti
+              libero harum veritatis quod obcaecati perferendis!
+            </p>
+          </div>
+          <div className="p-6">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi
+              id, unde consequuntur natus at enim autem. Sequi doloremque
+              consequuntur exercitationem, commodi dolor nobis voluptatibus
+              ipsam laudantium natus dicta beatae reprehenderit.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="pt-6 border-t-line border-t-[1px]">
-        <p className="flex justify-between mb-4">
-          <span className="text-[#ABBBC2] text-sm font-normal leading-tight">
-            Discount
-          </span>
-          <span className="text-right text-white text-base font-medium  leading-snug">
-            $0
-          </span>
-        </p>
-        <p className="flex justify-between mb-11">
-          <span className="text-[#ABBBC2] text-sm font-normal leading-tight">
-            Sub total
-          </span>
-          <span className="text-right text-white text-base font-medium  leading-snug">
-            {formatCurrency(totalCart())}
-          </span>
-        </p>
-        <button
-          type="button"
-          className="p-3.5 bg-primary hover:bg-[#FE907D] active:opacity-70 rounded-lg text-sm font-semibold leading-tight  shadow-[0px_8px_24px_0px_rgba(234,124,105,0.32)] w-full transition-all"
-        >
-          Continue to Payment
-        </button>
-      </div>
-    </aside>
+    </>
   );
 }
