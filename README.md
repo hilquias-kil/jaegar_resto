@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Front end - test project
+
+link to the app: https://jaegar-resto-nine.vercel.app/
+
+## Overview
+
+This project demonstrates a robust front-end development setup. It's built with a focus on ease of use, scalability, and modern web development practices.
+
+## Built With:
+
+- [Nextjs](https://nextjs.org/) - A React framework for production
+- [React](https://react.dev/) - A JavaScript library for building user interfaces
+- [Typescript](https://www.typescriptlang.org/) - A typed superset of JavaScript
+- [TailWind](https://www.typescriptlang.org/) - A utility-first CSS framework
+- [Zustand](https://github.com/pmndrs/zustand) - A simple, state management solution
+- [Vitest](https://vitest.dev/) - A testing framework
+- [Testing-library](https://testing-library.com/) - Testing utilities
+- [Storybook](https://www.storybook.io/) - Doc the components
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- [Node.js](https://nodejs.org/en) - _LTS version recommended_
+- npm/[yarn](https://yarnpkg.com)/[pnpm](https://pnpm.io/pt/)
+
+### Installation
+
+Install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install # recommended
+```
+
+### Running the Development Server
+
+Start the server:
 
 ```bash
 npm run dev
 # or
 yarn dev
 # or
-pnpm dev
-# or
-bun dev
+pnpm dev # recommended
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Building the Project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Compile and prepare the project for production:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build # recommended
+```
 
-## Learn More
+Run the server in production mode:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run start
+# or
+yarn start
+# or
+pnpm start # recommended
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Running Tests
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Unit Tests
 
-## Deploy on Vercel
+Execute unit tests:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run test
+# or
+yarn test
+# or
+pnpm test # recommended
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Running storybook
+
+```bash
+npm run storybook
+# or
+yarn storybook
+# or
+pnpm storybook # recommended
+```
+
+## Accessing the Application
+
+The application will be running at [http://localhost:3000](http://localhost:3000).
