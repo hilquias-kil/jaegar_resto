@@ -11,16 +11,15 @@ interface TabProps {
 }
 
 const tabVariants = {
-  active:
-    "text-primary after:content-[''] after:block after:absolute after:bg-primary after:w-1/2 after:h-[3px] after:bottom-0",
-  default: "text-white",
+  active: "text-primary after:bg-primary",
+  default: "text-white after:bg-transparent",
 };
 
 const Tab = ({ children, active, onClick }: TabProps) => {
   return (
     <li>
       <button
-        className={`text-sm font-semibold hover:text-primary pb-3 block relative ${
+        className={`text-sm font-semibold hover:text-primary pb-3 block relative transition-colors after:content-[''] after:transition-colors after:block after:absolute  after:w-1/2 after:h-[3px] after:bottom-0 ${
           active ? tabVariants.active : tabVariants.default
         }`}
         onClick={onClick}

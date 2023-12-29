@@ -3,19 +3,8 @@
 import { CartProduct } from "@/components/CartProduct";
 import { useStore } from "@/store/useStore";
 import { formatCurrency } from "@/utils/formatCurrency";
-
-function EmptyCart() {
-  return (
-    <tr>
-      <td colSpan={3} className="text-center py-6">
-        <p className="text-[28px] font-semibold">Your cart is empty</p>
-        <p className="">
-          Add items to create <br /> an order
-        </p>
-      </td>
-    </tr>
-  );
-}
+import { EmptyCart } from "@/components/EmptyCart";
+import { Button } from "@/components/Button";
 
 export function Cart() {
   const cart = useStore((state) => state.cart);
@@ -82,13 +71,7 @@ export function Cart() {
               {formatCurrency(totalCart())}
             </span>
           </p>
-          <button
-            type="button"
-            onClick={togglePayment}
-            className="p-3.5 bg-primary hover:bg-[#FE907D] active:opacity-70 rounded-lg text-sm font-semibold leading-tight  shadow-[0px_8px_24px_0px_rgba(234,124,105,0.32)] w-full transition-all"
-          >
-            Continue to Payment
-          </button>
+          <Button onClick={togglePayment}>Continue to Payment</Button>
         </div>
       </aside>
     </>

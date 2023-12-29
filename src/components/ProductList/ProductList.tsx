@@ -11,8 +11,8 @@ export function ProductList({ products }: { products: ProductModel[] }) {
 
   return (
     <>
-      <h2 className="text-[28px] font-semibold mb-6">Choose Dishes {search}</h2>
-      <div className="grid grid-cols-3 content-start gap-7 overflow-y-auto">
+      <h2 className="text-[28px] font-semibold mb-4">Choose Dishes {search}</h2>
+      <div className="grid grid-cols-3 content-start gap-7 overflow-y-auto py-2">
         {products
           .filter((product) => product.category === category)
           .filter((product) =>

@@ -1,18 +1,13 @@
 "use client";
 
-import {
-  Back,
-  Checkmark,
-  CreditCard,
-  Paypal,
-  Plus,
-  Wallet,
-} from "@/components/Icons";
+import { Back, CreditCard, Paypal, Plus, Wallet } from "@/components/Icons";
 import { CartProduct } from "@/components/CartProduct";
 import { useStore } from "@/store/useStore";
 import { formatCurrency } from "@/utils/formatCurrency";
-import { PayMethodButton } from "../PayMethodButton";
-import { TextField } from "../TextField";
+import { PayMethodButton } from "@/components/PayMethodButton";
+import { TextField } from "@/components/TextField";
+import { EmptyCart } from "@/components/EmptyCart";
+import { Button } from "@/components/Button";
 
 export function Payment() {
   const cart = useStore((state) => state.cart);
@@ -43,26 +38,33 @@ export function Payment() {
                 Order ID #34562
               </p>
             </div>
-            <button className="p-3.5 bg-primary hover:bg-[#FE907D] active:opacity-70 rounded-lg text-sm font-semibold leading-tight  shadow-[0px_8px_24px_0px_rgba(234,124,105,0.32)] transition-all">
+
+            <Button full={false}>
               <Plus color="#FFFFFF" />
-            </button>
+            </Button>
           </div>
           <div className="overflow-y-auto">
             <table className="w-full table-fixed">
               <tbody>
-                {cart.map((it) => (
-                  <CartProduct
-                    key={it.id}
-                    name={it.name}
-                    image={it.image}
-                    price={it.price}
-                    note={it.note}
-                    qty={it.qty}
-                    changeNote={(note) => changeProductNote(it.id, note)}
-                    changeQty={(qty) => changeProductQty(it.id, parseInt(qty))}
-                    removeProduct={() => removeProduct(it.id)}
-                  />
-                ))}
+                {cart.length ? (
+                  cart.map((it) => (
+                    <CartProduct
+                      key={it.id}
+                      name={it.name}
+                      image={it.image}
+                      price={it.price}
+                      note={it.note}
+                      qty={it.qty}
+                      changeNote={(note) => changeProductNote(it.id, note)}
+                      changeQty={(qty) =>
+                        changeProductQty(it.id, parseInt(qty))
+                      }
+                      removeProduct={() => removeProduct(it.id)}
+                    />
+                  ))
+                ) : (
+                  <EmptyCart />
+                )}
               </tbody>
             </table>
           </div>
@@ -158,19 +160,10 @@ export function Payment() {
             </form>
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <button
-              type="button"
-              onClick={togglePayment}
-              className="p-3.5 text-primary hover:bg-[rgba(234,124,105,0.16)] active:opacity-70 border-primary border-[1px] bg-transparent rounded-lg text-sm font-semibold leading-tight  w-full transition-all"
-            >
+            <Button variant="outlined" onClick={togglePayment}>
               Cancel
-            </button>
-            <button
-              type="submit"
-              className="p-3.5 bg-primary hover:bg-[#FE907D] active:opacity-70 rounded-lg text-sm font-semibold leading-tight  shadow-[0px_8px_24px_0px_rgba(234,124,105,0.32)] w-full transition-all"
-            >
-              Confirm Payment
-            </button>
+            </Button>
+            <Button type="submit">Confirm Payment</Button>
           </div>
         </div>
       </div>
