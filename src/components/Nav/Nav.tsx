@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Home } from "@/components/Icons";
 import { Dashboard } from "@/components/Icons";
 import { Settings } from "@/components/Icons";
