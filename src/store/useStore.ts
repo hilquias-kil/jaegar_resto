@@ -1,6 +1,6 @@
 import { ProductModel } from "@/model/product";
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 interface ProductCart {
   id: ProductModel["id"];

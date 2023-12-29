@@ -13,7 +13,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
+    <div className="p-6 flex justify-center items-center">
       <h2>Something went wrong!</h2>
       <button onClick={() => reset()}>Try again</button>
     </div>
