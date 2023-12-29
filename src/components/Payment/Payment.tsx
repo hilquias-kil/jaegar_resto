@@ -16,16 +16,22 @@ import { TextField } from "../TextField";
 
 export function Payment() {
   const cart = useStore((state) => state.cart);
+  const openPayment = useStore((state) => state.openPayment);
   const changeProductQty = useStore((state) => state.changeProductQty);
   const changeProductNote = useStore((state) => state.changeProductNote);
   const removeProduct = useStore((state) => state.removeProduct);
   const totalCart = useStore((state) => state.totalCart);
+  const togglePayment = useStore((state) => state.togglePayment);
 
   return (
-    <div className="absolute inset-0 bg-[rgba(0,0,0,0.70)] flex justify-end">
+    <div
+      className={`absolute inset-0 bg-[rgba(0,0,0,0.70)] flex justify-end ${
+        !openPayment && "hidden"
+      } `}
+    >
       <div className="w-[68%] h-full bg-secondary rounded-l-xl grid grid-cols-2">
         <div className="p-6 border-r-line border-r-[1px] grid grid-rows-[auto_auto_1fr_auto]">
-          <button className="mb-4">
+          <button className="mb-4" onClick={togglePayment}>
             <Back />
           </button>
           <div className="flex justify-between items-center border-b-line border-b-[1px] pb-6">
@@ -154,7 +160,8 @@ export function Payment() {
           <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
-              className="p-3.5 text-primary hover:bg-[rgba(234,124,105,0.16)] active:opacity-70 border-primary border-[1px] bg-transparent active:opacity-70 rounded-lg text-sm font-semibold leading-tight  w-full transition-all"
+              onClick={togglePayment}
+              className="p-3.5 text-primary hover:bg-[rgba(234,124,105,0.16)] active:opacity-70 border-primary border-[1px] bg-transparent rounded-lg text-sm font-semibold leading-tight  w-full transition-all"
             >
               Cancel
             </button>

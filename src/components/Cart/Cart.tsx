@@ -23,6 +23,7 @@ export function Cart() {
   const changeProductNote = useStore((state) => state.changeProductNote);
   const removeProduct = useStore((state) => state.removeProduct);
   const totalCart = useStore((state) => state.totalCart);
+  const togglePayment = useStore((state) => state.togglePayment);
 
   return (
     <>
@@ -83,6 +84,7 @@ export function Cart() {
           </p>
           <button
             type="button"
+            onClick={togglePayment}
             className="p-3.5 bg-primary hover:bg-[#FE907D] active:opacity-70 rounded-lg text-sm font-semibold leading-tight  shadow-[0px_8px_24px_0px_rgba(234,124,105,0.32)] w-full transition-all"
           >
             Continue to Payment

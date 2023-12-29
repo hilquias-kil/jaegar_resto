@@ -15,6 +15,7 @@ interface State {
   category: string;
   search: string;
   cart: ProductCart[];
+  openPayment: boolean;
   totalCart: () => number;
   setCategory: (category: string) => void;
   setSearch: (search: string) => void;
@@ -22,6 +23,7 @@ interface State {
   changeProductQty: (id: number, qty: number) => void;
   changeProductNote: (id: number, note: string) => void;
   removeProduct: (id: number) => void;
+  togglePayment: () => void;
 }
 
 export const useStore = create<State>()(
@@ -30,6 +32,7 @@ export const useStore = create<State>()(
       category: "",
       search: "",
       cart: [],
+      openPayment: false,
       totalCart: () =>
         get().cart.reduce(
           (accumulator, currentValue) =>
@@ -80,9 +83,10 @@ export const useStore = create<State>()(
             item.id === id ? { ...item, note: note } : item
           ),
         })),
-
       removeProduct: (id) =>
         set((state) => ({ cart: state.cart.filter((item) => item.id !== id) })),
+      togglePayment: () =>
+        set((state) => ({ openPayment: !state.openPayment })),
     }),
     { name: "store" }
   )
