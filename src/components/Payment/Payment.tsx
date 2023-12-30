@@ -23,9 +23,15 @@ export function Payment() {
       className={`absolute inset-0 bg-[rgba(0,0,0,0.70)] flex justify-end ${
         !openPayment && "hidden"
       } `}
+      onClick={togglePayment}
     >
-      <div className="w-[68%] h-full bg-secondary rounded-l-xl grid grid-cols-2">
-        <div className="p-6 border-r-line border-r-[1px] grid grid-rows-[auto_auto_1fr_auto]">
+      <div
+        className="w-[68%] h-full bg-secondary rounded-l-xl grid grid-cols-2"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <div className="p-6 border-r-line border-r-[1px] grid grid-rows-[auto_auto_1fr_auto] h-screen">
           <button className="mb-4" onClick={togglePayment}>
             <Back />
           </button>
